@@ -1,0 +1,51 @@
+# PDF Comparison Tool Configuration
+
+# Folder Monitoring Settings
+monitoring:
+  enabled: true
+  check_interval: 5  # minutes
+  folders:
+    offers: ""  # Path to offers folder
+    invoices: ""  # Path to invoices folder
+
+# PDF Processing Settings
+processing:
+  price_tolerance: 0.02  # 2% tolerance for price differences
+  extraction_method: "intelligent"  # intelligent, text_only, or ocr_only
+  track_partial_deliveries: true
+
+# Notification Settings
+notifications:
+  slack:
+    enabled: true
+    webhook_url: ""
+    channel: "#pdf-comparison-alerts"
+    notify_on:
+      price_discrepancies: true
+      quantity_mismatches: true
+      missing_items: true
+      successful_comparisons: false
+    thresholds:
+      price_difference: 0.0  # Minimum price difference to trigger notification
+      quantity_difference: 0  # Minimum quantity difference to trigger notification
+
+# UI Settings
+ui:
+  theme: "light"  # light or dark
+  window:
+    width: 1024
+    height: 768
+  auto_refresh: true
+  refresh_interval: 60  # seconds
+
+# Database Settings
+database:
+  path: "data/comparison_history.db"
+  retention_days: 90  # How long to keep historical data
+
+# Logging Settings
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file: "logs/comparison_tool.log"
+  max_size: 10485760  # 10MB
+  backup_count: 5
