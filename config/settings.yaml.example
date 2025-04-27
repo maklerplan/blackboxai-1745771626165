@@ -1,0 +1,145 @@
+# PDF Comparison Tool - Example Configuration
+
+# Folder Monitoring Settings
+monitoring:
+  enabled: true
+  check_interval: 5  # minutes
+  folders:
+    offers: "/path/to/offers/folder"     # Replace with your offers folder path
+    invoices: "/path/to/invoices/folder" # Replace with your invoices folder path
+
+# PDF Processing Settings
+processing:
+  # Tolerance for price differences (as decimal)
+  # e.g., 0.02 = 2% tolerance
+  price_tolerance: 0.02
+  
+  # PDF text extraction method:
+  # - intelligent: Uses both text extraction and OCR when needed
+  # - text_only: Only extracts text (faster but less accurate)
+  # - ocr_only: Forces OCR for all documents (slower but more reliable)
+  extraction_method: "intelligent"
+  
+  # Whether to track partial deliveries across multiple invoices
+  track_partial_deliveries: true
+
+# Notification Settings
+notifications:
+  slack:
+    enabled: true
+    webhook_url: "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"  # Replace with your Slack webhook URL
+    channel: "#pdf-comparison-alerts"  # Replace with your channel name
+    
+    # Configure which events trigger notifications
+    notify_on:
+      price_discrepancies: true
+      quantity_mismatches: true
+      missing_items: true
+      successful_comparisons: false  # Set to true to get notifications for successful comparisons
+    
+    # Minimum differences required to trigger notifications
+    thresholds:
+      price_difference: 0.0  # Minimum price difference to trigger notification
+      quantity_difference: 0  # Minimum quantity difference to trigger notification
+
+# UI Settings
+ui:
+  # Theme: light or dark
+  theme: "light"
+  
+  # Window dimensions
+  window:
+    width: 1024
+    height: 768
+  
+  # Auto-refresh settings
+  auto_refresh: true
+  refresh_interval: 60  # seconds
+
+# Database Settings
+database:
+  # Path to SQLite database file
+  path: "data/comparison_history.db"
+  
+  # Number of days to keep historical data
+  retention_days: 90
+
+# Logging Settings
+logging:
+  # Logging level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: "INFO"
+  
+  # Log file location
+  file: "logs/comparison_tool.log"
+  
+  # Maximum log file size in bytes (10MB)
+  max_size: 10485760
+  
+  # Number of backup log files to keep
+  backup_count: 5
+
+# Advanced Settings
+advanced:
+  # Maximum number of concurrent PDF processing tasks
+  max_workers: 4
+  
+  # Timeout for PDF processing (seconds)
+  processing_timeout: 300
+  
+  # Memory limit per PDF (bytes, 0 for no limit)
+  memory_limit: 0
+  
+  # Enable debug mode (additional logging and error information)
+  debug_mode: false
+  
+  # Temporary file cleanup
+  temp_file_cleanup:
+    enabled: true
+    max_age: 24  # hours
+    
+  # PDF text extraction settings
+  pdf_extraction:
+    # DPI for image-based PDFs
+    dpi: 300
+    
+    # Languages to consider for OCR
+    ocr_languages: ["eng", "deu"]
+    
+    # Regular expressions for identifying important content
+    patterns:
+      item_code: "^[A-Z0-9-]+$"
+      quantity: "\\d+(?:\\.\\d+)?"
+      price: "(?:€|EUR)?\\s*\\d+(?:[.,]\\d{2})?"
+    
+    # Table detection settings
+    table_detection:
+      enabled: true
+      min_rows: 2
+      confidence_threshold: 0.8
+
+# Example item mappings for different document formats
+item_mappings:
+  # Format 1 (example supplier)
+  format1:
+    item_code: "Article Number"
+    description: "Description"
+    quantity: "Qty"
+    unit_price: "Unit Price"
+    total_price: "Total"
+  
+  # Format 2 (another supplier)
+  format2:
+    item_code: "Item ID"
+    description: "Product Name"
+    quantity: "Amount"
+    unit_price: "Price/Unit"
+    total_price: "Sum"
+
+# Document type identification rules
+document_rules:
+  offer:
+    - contains: ["Offer", "Quotation", "Quote"]
+    - filename_pattern: "^(?:offer|quote)_\\d+"
+  invoice:
+    - contains: ["Invoice", "Bill", "Receipt"]
+    - filename_pattern: "^(?:invoice|bill)_\\d+"
