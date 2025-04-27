@@ -1,0 +1,22 @@
+# GUI
+PyQt6==6.4.2
+
+# PDF Processing
+pdfplumber==0.7.4
+PyPDF2==3.0.1
+
+# File Monitoring
+watchdog==2.1.9
+
+# Notifications
+requests==2.31.0
+
+# Database
+SQLAlchemy==1.4.41
+
+# Configuration
+PyYAML==6.0
+
+# Testing
+pytest==7.4.0
+pytest-qt==4.2.0
