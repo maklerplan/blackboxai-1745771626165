@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Comparison Tool - Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <!-- Header -->
+        <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-gray-800">PDF Comparison Tool</h1>
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                    <i class="fas fa-cog mr-2"></i>Settings
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Left Panel - File Management -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h2 class="text-xl font-semibold mb-4">Document Management</h2>
+                
+                <!-- Offer Section -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium mb-2">Offer Document</h3>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+                        <i class="fas fa-file-pdf text-4xl text-gray-400 mb-2"></i>
+                        <p class="text-gray-600">Drag and drop offer PDF here</p>
+                        <p class="text-sm text-gray-500">or</p>
+                        <button class="mt-2 px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300">
+                            Browse Files
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Invoice Section -->
+                <div>
+                    <h3 class="text-lg font-medium mb-2">Invoice Documents</h3>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center">
+                        <i class="fas fa-file-invoice text-4xl text-gray-400 mb-2"></i>
+                        <p class="text-gray-600">Drag and drop invoice PDFs here</p>
+                        <p class="text-sm text-gray-500">or</p>
+                        <button class="mt-2 px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300">
+                            Browse Files
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Comparison Results -->
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h2 class="text-xl font-semibold mb-4">Comparison Results</h2>
+                
+                <!-- Status Section -->
+                <div class="mb-4 p-3 bg-green-100 rounded-md">
+                    <p class="text-green-700">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Last comparison completed successfully
+                    </p>
+                </div>
+
+                <!-- Summary -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium mb-2">Summary</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-3 rounded-md">
+                            <p class="text-sm text-gray-600">Total Items</p>
+                            <p class="text-xl font-semibold">24</p>
+                        </div>
+                        <div class="bg-yellow-50 p-3 rounded-md">
+                            <p class="text-sm text-yellow-600">Discrepancies</p>
+                            <p class="text-xl font-semibold">3</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Results -->
+                <div>
+                    <h3 class="text-lg font-medium mb-2">Detailed Results</h3>
+                    <div class="border rounded-md">
+                        <div class="p-3 border-b bg-red-50">
+                            <p class="font-medium text-red-700">Item #A1234</p>
+                            <p class="text-sm text-red-600">Quantity mismatch: Offered 10, Delivered 8</p>
+                        </div>
+                        <div class="p-3 border-b bg-yellow-50">
+                            <p class="font-medium text-yellow-700">Item #B5678</p>
+                            <p class="text-sm text-yellow-600">Price difference: Offered $45.00, Billed $48.50</p>
+                        </div>
+                        <div class="p-3 bg-green-50">
+                            <p class="font-medium text-green-700">Item #C9012</p>
+                            <p class="text-sm text-green-600">Matched: Quantity and price verified</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer - Actions -->
+        <div class="mt-6 bg-white rounded-lg shadow-md p-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-500">
+                        <span class="ml-2">Enable automatic monitoring</span>
+                    </label>
+                </div>
+                <div class="flex gap-4">
+                    <button class="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300">
+                        <i class="fas fa-history mr-2"></i>View History
+                    </button>
+                    <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                        <i class="fas fa-play mr-2"></i>Start Comparison
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
